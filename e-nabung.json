@@ -1,0 +1,731 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "E-Nabung",
+        "version": "1.0.0",
+        "description": "API Documentations for E-Nabung Apps",
+        "contact": {
+            "email": "mirzaqamaruzzaman18@gmail.com",
+            "name": "API Author"
+        }
+    },
+    "servers": [
+        {
+            "description": "Development Server",
+            "url": "http://127.0.0.1:8000/{environment}/api",
+            "variables": {
+                "environment": {
+                    "default": "dev",
+                    "description": "Development Environment",
+                    "enum": [
+                        "dev",
+                        "test"
+                    ]
+                }
+            }
+        },
+        {
+            "description": "Production Server",
+            "url": "https://gatheringcuy.free.nf"
+        }
+    ],
+    "externalDocs": {
+        "description": "Source API",
+        "url": "https://github.com/zaazxz/e-nabung"
+    },
+    "paths": {
+        "/user": {
+            "get": {
+                "summary": "Get User",
+                "security": [
+                    {
+                        "APIKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "User"
+                ],
+                "description": "Getting List of All User Data",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
+                                },
+                                "example": {
+                                    "code": "200",
+                                    "message": "Success",
+                                    "data": [
+                                        {
+                                            "id": 1,
+                                            "name": "Mirza",
+                                            "email": "mirzaqamaruzzaman18@gmail.com",
+                                            "balance": 10000,
+                                            "password": "mirza123"
+                                        },
+                                        {
+                                            "id": 2,
+                                            "name": "Nenden",
+                                            "email": "ndnlusi@gmail.com",
+                                            "balance": 10000,
+                                            "password": "nenden123"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
+                                },
+                                "example": {
+                                    "code": "400",
+                                    "message": "Bad Request",
+                                    "data": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add User",
+                "security": [
+                    {
+                        "APIKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "User"
+                ],
+                "description": "Adding New User Data",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRequest"
+                            },
+                            "example": {
+                                "name": "Mirza",
+                                "email": "mirzaqamaruzzaman18@gmail.com",
+                                "balance": 10000,
+                                "password": "mirza123"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
+                                },
+                                "example": {
+                                    "code": "200",
+                                    "message": "Success",
+                                    "data": {
+                                        "id": 1,
+                                        "name": "Mirza",
+                                        "email": "mirzaqamaruzzaman18@gmail.com",
+                                        "balance": 10000,
+                                        "password": "mirza123"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
+                                },
+                                "example": {
+                                    "code": "400",
+                                    "message": "Bad Request",
+                                    "data": null
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "summary": "Get User By ID",
+                "security": [
+                    {
+                        "APIKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "User"
+                ],
+                "description": "Getting User Data by ID",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
+                                },
+                                "example": {
+                                    "code": "200",
+                                    "message": "Success",
+                                    "data": {
+                                        "id": 1,
+                                        "name": "Mirza",
+                                        "email": "mirzaqamaruzzaman18@gmail.com",
+                                        "balance": 10000,
+                                        "password": "mirza123"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
+                                },
+                                "example": {
+                                    "code": "400",
+                                    "message": "Bad Request",
+                                    "data": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update User",
+                "security": [
+                    {
+                        "APIKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "User"
+                ],
+                "description": "Update User Data",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRequest"
+                            },
+                            "example": {
+                                "name": "Mirza",
+                                "email": "mirzaqamaruzzaman18@gmail.com",
+                                "balance": 10000,
+                                "password": "mirza123"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
+                                },
+                                "example": {
+                                    "code": "200",
+                                    "message": "Success",
+                                    "data": {
+                                        "id": 1,
+                                        "name": "Mirza",
+                                        "email": "mirzaqamaruzzaman18@gmail.com",
+                                        "balance": 10000,
+                                        "password": "mirza123"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
+                                },
+                                "example": {
+                                    "code": "400",
+                                    "message": "Bad Request",
+                                    "data": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete User",
+                "security": [
+                    {
+                        "APIKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "User"
+                ],
+                "description": "Delete User Data",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
+                                },
+                                "example": {
+                                    "code": "200",
+                                    "message": "Success",
+                                    "data": null
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
+                                },
+                                "example": {
+                                    "code": "400",
+                                    "message": "Bad Request",
+                                    "data": null
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/balance": {
+            "get": {
+                "summary": "Get Balance",
+                "security": [
+                    {
+                        "APIKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "Deposit Balance"
+                ],
+                "description": "Getting List of Deposit Balance Data from All users",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "required": false,
+                        "description": "Getting List of Deposit Balance Data from user",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BalanceResponse"
+                                },
+                                "example": {
+                                    "code": "200",
+                                    "message": "Success",
+                                    "data": [
+                                        {
+                                            "id": 1,
+                                            "user_id": {
+                                                "id": 1,
+                                                "name": "Mirza",
+                                                "email": "mirzaqamaruzzaman18@gmail.com",
+                                                "balance": 10000
+                                            },
+                                            "added_balance": 10000,
+                                            "reduced_balance": 0,
+                                            "date": "2022-01-01T00:00:00Z"
+                                        },
+                                        {
+                                            "id": 2,
+                                            "user_id": {
+                                                "id": 1,
+                                                "name": "Mirza",
+                                                "email": "mirzaqamaruzzaman18@gmail.com",
+                                                "balance": 10000
+                                            },
+                                            "added_balance": 0,
+                                            "reduced_balance": 10000,
+                                            "date": "2022-01-01T00:00:00Z"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BalanceResponse"
+                                },
+                                "example": {
+                                    "code": "400",
+                                    "message": "Bad Request",
+                                    "data": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add Balance",
+                "security": [
+                    {
+                        "APIKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "Deposit Balance"
+                ],
+                "description": "Adding or Reducing Balance User",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BalanceRequest"
+                            },
+                            "example": {
+                                "user_id": 1,
+                                "added_balance": 10000,
+                                "reduced_balance": 0,
+                                "date": "2022-01-01T00:00:00Z"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BalanceResponse"
+                                },
+                                "example": {
+                                    "code": "200",
+                                    "message": "Success",
+                                    "data": {
+                                        "id": 1,
+                                        "user_id": {
+                                            "id": 1,
+                                            "name": "Mirza",
+                                            "email": "mirzaqamaruzzaman18@gmail.com",
+                                            "balance": 10000
+                                        },
+                                        "added_balance": 10000,
+                                        "reduced_balance": 0,
+                                        "date": "2022-01-01T00:00:00Z"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BalanceResponse"
+                                },
+                                "example": {
+                                    "code": "400",
+                                    "message": "Bad Request",
+                                    "data": null
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/balance/{id}": {
+            "put": {
+                "summary": "Update Balance",
+                "security": [
+                    {
+                        "APIKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "Deposit Balance"
+                ],
+                "description": "Update Balance User",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BalanceRequest"
+                            },
+                            "example": {
+                                "user_id": 1,
+                                "added_balance": 10000,
+                                "reduced_balance": 0,
+                                "date": "2022-01-01T00:00:00Z"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BalanceResponse"
+                                },
+                                "example": {
+                                    "code": "200",
+                                    "message": "Success",
+                                    "data": {
+                                        "id": 1,
+                                        "user_id": {
+                                            "id": 1,
+                                            "name": "Mirza",
+                                            "email": "mirzaqamaruzzaman18@gmail.com",
+                                            "balance": 10000
+                                        },
+                                        "added_balance": 10000,
+                                        "reduced_balance": 0,
+                                        "date": "2022-01-01T00:00:00Z"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BalanceResponse"
+                                },
+                                "example": {
+                                    "code": "400",
+                                    "message": "Bad Request",
+                                    "data": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete Balance",
+                "security": [
+                    {
+                        "APIKeyAuth": []
+                    }
+                ],
+                "tags": [
+                    "Deposit Balance"
+                ],
+                "description": "Delete Balance User",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "code": "200",
+                                    "message": "Success"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "code": "400",
+                                    "message": "Bad Request"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BalanceResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "user_id": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "balance": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "added_balance": {
+                                    "type": "number"
+                                },
+                                "reduced_balance": {
+                                    "type": "number"
+                                },
+                                "date": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "BalanceRequest": {
+                "type": "object",
+                "properties": {
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "added_balance": {
+                        "type": "number"
+                    },
+                    "reduced_balance": {
+                        "type": "number"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "UserResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "balance": {
+                                    "type": "number"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "UserRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "balance": {
+                        "type": "number"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "APIKeyAuth": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
