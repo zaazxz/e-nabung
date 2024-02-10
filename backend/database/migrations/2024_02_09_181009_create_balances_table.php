@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->integer('added_balance');
             $table->integer('reduced_balance');
-            $table->date('date');
+            $table->timestamp('date');
             $table->timestamps();
         });
     }

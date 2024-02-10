@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BalanceController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +32,10 @@ Route::middleware('api.auth')->group(function () {
 
     /* API Route For Balance */
     Route::group(['prefix' => '/dev/api'], function () {
-        // Route::get('/balance', );
+        Route::get('/balances', [BalanceController::class, 'index']);
+        Route::post('/balance', [BalanceController::class, 'store']);
+        Route::put('/balance/{id}',[BalanceController::class, 'update']);
+        Route::delete('/balance/{id}',[BalanceController::class, 'destroy']);
     });
 
 });
