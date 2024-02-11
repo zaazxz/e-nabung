@@ -1,0 +1,63 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/background.jpg');
+    background-size: cover;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+}
+
+.custom-card {
+    height: 45vh;
+    backdrop-filter: blur(1px);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 1px 1px 1px 1px rgba(255,255,255,0.8); */
+}
+
+.btn-custom {
+    font-weight: bold;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+}
+
+.link-custom {
+    font-weight: bold;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.8);
+    color: black;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,1);
+    box-shadow: inset -1px -1px 1px 1px rgba(0,0,0,1);
+    text-decoration: none;
+}
+
+.link-custom:hover {
+    color: black;
+}
+
+.link-custom:active {
+    color: black;
+    box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,1);
+    box-shadow: -1px -1px 1px 1px rgba(0,0,0,1);
+}
+
+.input-custom {
+    width: 400px;
+    border-radius: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(255,255,255,0.8);
+    text-align: center;
+    font-weight: bold;
+}

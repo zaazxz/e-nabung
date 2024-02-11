@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\Api\BalanceController;
-use App\Http\Controllers\Api\UserController;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cookie;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\BalanceController;
+use App\Http\Controllers\Api\Helper\ApiKeyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+/* API Routes */
 Route::middleware('api.auth')->group(function () {
 
     /* API Route For Users */
@@ -39,4 +39,13 @@ Route::middleware('api.auth')->group(function () {
     });
 
 });
+
+/* Backend Documentation Routes */
+Route::get('/', function () {
+    return view('index');
+});
+
+/* JQuery to Controller path */
+Route::post('/question', [ApiKeyController::class, 'generateApiKey'])->name('question');
+Route::get('/cookie-delete', [ApiKeyController::class, 'deleteCookie'])->name('cookie-delete');
 
